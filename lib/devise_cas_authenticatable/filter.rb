@@ -23,7 +23,7 @@ module RubyCAS
       end
       
       def filter(controller)
-        raise "Cannot use the CASClient filter because it has not yet been configured." if config.nil?
+        Devise.cas_client if config.nil?
         
         if @@fake_user
           controller.session[client.username_session_key] = @@fake_user

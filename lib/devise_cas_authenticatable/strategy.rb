@@ -43,6 +43,7 @@ module Devise
       end
   
       def read_ticket(params)
+        return session[:cas_last_valid_ticket] if session[:cas_last_valid_ticket]
         ticket = params[:ticket]
         return nil unless ticket
               

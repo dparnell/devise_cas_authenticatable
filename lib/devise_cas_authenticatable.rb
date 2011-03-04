@@ -39,7 +39,7 @@ module Devise
   @@cas_enable_single_sign_out = true
   
   def self.cas_client
-    @@cas_client ||= CASClient::Client.new(
+    @@cas_client ||= RubyCAS::Filter.setup(
         :cas_base_url => @@cas_base_url,
         :login_url => @@cas_login_url,
         :logout_url => @@cas_logout_url,

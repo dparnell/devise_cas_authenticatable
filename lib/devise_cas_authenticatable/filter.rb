@@ -18,6 +18,8 @@ module RubyCAS
         @@config[:logger] = Rails.logger unless @@config[:logger]
         @@client = CASClient::Client.new(@@config)
         @@log = @@client.log
+        
+        @@client
       end
       
       def filter(controller)

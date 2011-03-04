@@ -10,12 +10,11 @@ class Devise::CasSessionsController < Devise::SessionsController
   end
   
   def destroy
+    reset_session
     # if :cas_create_user is false a CAS session might be open but not signed_in
     # in such case we destroy the session here
     if signed_in?(resource_name)
       sign_out(resource_name)
-    else
-      reset_session
     end
     destination = request.protocol
     destination << request.host

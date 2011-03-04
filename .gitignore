@@ -1,3 +1,4 @@
 pkg/*
 spec/scenario/db/*.sqlite3
 spec/scenario/tmp/*
+.DS_Store

@@ -4,6 +4,7 @@ require 'devise_cas_authenticatable/schema'
 require 'devise_cas_authenticatable/routes'
 require 'devise_cas_authenticatable/strategy'
 require 'devise_cas_authenticatable/exceptions'
+require 'devise_cas_authenticatable/filter'
 
 require 'rubycas-client'
 
@@ -33,13 +34,17 @@ module Devise
   
   mattr_accessor :cas_create_user
   @@cas_create_user = true
+
+  mattr_accessor :cas_enable_single_sign_out
+  @@cas_enable_single_sign_out = true
   
   def self.cas_client
     @@cas_client ||= CASClient::Client.new(
         :cas_base_url => @@cas_base_url,
         :login_url => @@cas_login_url,
         :logout_url => @@cas_logout_url,
-        :validate_url => @@cas_validate_url
+        :validate_url => @@cas_validate_url,
+        :enable_single_sign_out => @@casenable_single_sign_out
       )
   end
 end
